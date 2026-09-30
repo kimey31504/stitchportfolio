@@ -1,0 +1,823 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stitch Portfolio</title>
+<!-- Open Graph & Meta Tags -->
+<meta content="Stitch Portfolio" property="og:title">
+<meta content="Keith's Stitch Portfolio" property="og:description">
+<meta content="website" property="og:type">
+<meta content="https://kimey31504.github.io/stitchportfolio/" property="og:url">
+<meta content="https://lh3.googleusercontent.com/aida-public/AB6AXuB1qNksC-RGNF5-jc3kQZFXXcEa3fC2-S6K9elGn7u8KWDyFYJxyPR7asKfz6EVvKWoMzGUsiPaeCeSffo609hVWHEDRA9s7tipLpQZWOMljFm6V2SLN5Iwgkhp_h4XYww4BEOVWKtomcZF43lE-lK-Zf3IgySObKBCz95genDDqRsBTN_5W5QpzMOwNpcLWVnEtTcHBwh1qncSDlv0iIMlTNFJ5MRm8pNSWNlx7OYGyG9WpI8zOfn9tbtq1Ed7dPNXcg" property="og:image">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="Stitch Portfolio" name="twitter:title">
+<meta content="Keith's Stitch Portfolio" name="twitter:description">
+<meta content="https://lh3.googleusercontent.com/aida-public/AB6AXuDaqF4A4BvOa81Q2jBLaCS2sJlZTcdyFTO9zEEBOPXdVRdaGS2MH47Iz3rJJe6zs4ioawndCh3QGcZshJPXZjVihWEDX-V3N_CwULH4yE7wIz-7wgm3kLin0E1XA2Vrq7rwct5qMCaO1rX4e0s_xTNdre6UAOuC8nn1Nyvt00hv6GHWFxQzsHcIOH442tNn5a58du0zPVUoNOIEUWkPiR08llfLvZkS2ep_uDaoR02j9JbOHUeZpsuL0FMu795UmQOuYw" name="twitter:image">
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Font Awesome for clean semantic icons -->
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" referrerpolicy="no-referrer" rel="stylesheet">
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config Customization -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#0f172a',
+              card: '#ffffff',
+              border: '#e2e8f0',
+              badge: '#f1f5f9',
+              accent: '#2563eb'
+            }
+          },
+          boxShadow: {
+            'subtle': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'card-hover': '0 10px 25px -4px rgba(0, 0, 0, 0.08)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles for Layout & Visual Polish -->
+<style data-purpose="custom-scrollbars-and-utilities">
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #viewport-container {
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Carousel hide scrollbar on desktop while retaining touch/button scroll */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Seamless Carousel track transitions */
+    .carousel-track {
+      transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+  </style>
+<!-- END: Custom Styles for Layout & Visual Polish -->
+</head>
+<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased h-screen overflow-hidden selection:bg-slate-900 selection:text-white">
+<!-- BEGIN: Floating Sticky Navigation Bar -->
+<header class="fixed top-3 sm:top-4 left-0 right-0 z-50 px-4 pointer-events-none transition-all duration-300" id="main-header">
+<div class="max-w-6xl mx-auto flex items-center justify-between md:justify-center relative pointer-events-auto">
+<!-- Mobile brand title / placeholder for balanced spacing on mobile -->
+<span class="md:hidden font-bold tracking-tight text-slate-800 text-xs px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-slate-200 shadow-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-blue-600"><br></span></span>
+<!-- Desktop & Tablet Pill Navigation Menu -->
+<nav class="hidden md:flex items-center bg-white/90 backdrop-blur-md border border-slate-200/90 rounded-full p-1.5 shadow-lg shadow-slate-200/50 text-xs font-semibold tracking-wide text-slate-600">
+<a class="nav-item px-5 py-1.5 rounded-full bg-slate-900 text-white transition duration-200" data-target="home" href="#home">Home</a>
+<a class="nav-item px-5 py-1.5 rounded-full hover:text-slate-900 transition duration-200 hover:bg-slate-100 text-slate-600" data-target="projects" href="#projects">My Projects</a>
+<a class="nav-item px-5 py-1.5 rounded-full hover:text-slate-900 transition duration-200 hover:bg-slate-100 text-slate-600" data-target="tools" href="#tools">Tools</a>
+<a class="nav-item px-5 py-1.5 rounded-full hover:text-slate-900 transition duration-200 hover:bg-slate-100 text-slate-600" data-target="contact" href="#contact">Contact</a>
+</nav>
+<!-- Mobile Hamburger Button -->
+<button aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-sm focus:outline-none transition" data-purpose="toggle-mobile-menu" id="mobile-menu-btn">
+<i class="fa-solid fa-bars text-base" id="menu-icon"></i>
+</button>
+</div>
+<!-- Mobile Dropdown Navigation Drawer -->
+<div class="hidden md:hidden max-w-xs mx-auto mt-2 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl p-3 shadow-xl flex flex-col gap-1.5 pointer-events-auto" id="mobile-dropdown">
+<a class="mobile-nav-link px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold text-center" data-target="home" href="#home">Home</a>
+<a class="mobile-nav-link px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 text-xs font-semibold text-center" data-target="projects" href="#projects">My Projects</a>
+<a class="mobile-nav-link px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 text-xs font-semibold text-center" data-target="tools" href="#tools">Tools</a>
+<a class="mobile-nav-link px-4 py-2 rounded-xl text-slate-700 hover:bg-slate-100 text-xs font-semibold text-center" data-target="contact" href="#contact">Contact</a>
+</div>
+</header>
+<!-- END: Floating Sticky Navigation Bar -->
+<!-- BEGIN: Full Viewport Scroll Container -->
+<div class="h-screen w-full overflow-y-auto overflow-x-hidden scroll-smooth snap-y snap-mandatory relative" id="viewport-container">
+<!-- BEGIN: HeroSection (Full Viewport) -->
+<section class="h-screen min-h-screen snap-start snap-always flex flex-col justify-center items-center relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-16 pb-6" id="home">
+<div class="max-w-4xl w-full mx-auto my-auto">
+<div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-12 bg-white/80 border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-subtle backdrop-blur-sm">
+<!-- Avatar portrait container -->
+<div class="flex-shrink-0" data-purpose="user-avatar-wrapper">
+<div class="relative w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full p-1.5 bg-gradient-to-tr from-slate-200 to-slate-100 shadow-md">
+<img alt="Keith Wilmer Handumon" class="w-full h-full object-cover rounded-full shadow-inner border border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKsohS7jquq6XPfPeQT0UivVCt7Kl2FtMvoVN4hriR7dFptcPbscs1oWakd3tKHVAksxwQiw0C64sa8FLshRU8eAxUHLP3fmBzXlGj4AfBTmZBzWgdrBYAw1Xmk-a2ku6Kdqfu6TXzBhn2H6V8Oj69sW86OZOZjivwp2Z8mffqjnaWwmyaS4x-xpwolZ4OWjlxbmSxkX-NYeaPxRKeJj9XtOXrk31ZEA9a9YmUO5N6qjjieGd2qSkZB8BzI8NJmDV01Q">
+<span class="absolute bottom-2 right-2 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-sm" title="Available for opportunities"></span>
+</div>
+</div>
+<!-- Hero Details & Introduction -->
+<div class="text-center lg:text-left flex flex-col items-center lg:items-start max-w-xl">
+<!-- Pill Role Tag -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[11px] sm:text-xs font-semibold tracking-wider uppercase mb-2.5">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+            Full Stack Web Developer
+          </div>
+<!-- Full Name Header -->
+<h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Keith Wilmer Handumon
+          </h1>
+<!-- Bio Paragraph -->
+<p class="mt-3 text-slate-600 text-xs sm:text-sm leading-relaxed max-w-lg">
+            Motivated and detail-oriented Computer Engineering graduate possessing strong analytical, troubleshooting, and problem-solving skills, with the ability to work collaboratively in a team environment.
+          </p>
+<!-- Action CTA Buttons -->
+<div class="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs tracking-wide shadow-sm hover:shadow transition duration-200" href="#projects">
+<span class="">View Work</span>
+<i class="fa-solid fa-arrow-down text-[10px]"></i>
+</a>
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 font-medium text-xs tracking-wide shadow-sm hover:border-slate-300 transition duration-200" download="./assets/KEITH WILMER HANDUMON.pdf" href="./assets/KEITH WILMER HANDUMON.pdf">
+<span class="">Hire Me</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ProjectsSection (Full Viewport) -->
+<section class="h-screen min-h-screen snap-start snap-always flex flex-col justify-center items-center relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-16 pb-6 border-t border-slate-100" id="projects">
+<div class="max-w-6xl w-full mx-auto my-auto flex flex-col justify-center">
+<!-- Section Header -->
+<div class="text-center mb-4 sm:mb-6">
+<div class="inline-flex items-center px-3.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-bold tracking-widest uppercase mb-1.5">
+          My Projects
+        </div>
+<p class="text-xs text-slate-500 font-medium">
+          A selection of recent production applications &amp; client solutions
+        </p>
+</div>
+<!-- Projects Container with Responsive Carousel Controls -->
+<div class="relative group px-1 sm:px-2">
+<!-- Prev Button -->
+<button aria-label="Previous Project" class="flex absolute -left-2 sm:-left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200 shadow-md items-center justify-center text-slate-700 hover:text-slate-900 hover:bg-slate-50 hover:scale-105 active:scale-95 transition cursor-pointer" id="carousel-prev-btn">
+<i class="fa-solid fa-chevron-left text-xs sm:text-sm"></i>
+</button>
+<!-- Overflow Wrapper -->
+<div class="overflow-hidden w-full py-1">
+<!-- Sliding Track -->
+<div class="flex carousel-track" id="projects-slider" style="transform: translateX(0%);">
+<!-- Project 1: Nexus Analytics Cloud -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="Nexus Analytics Cloud Dashboard Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiRKNxskQSMTfHVgyuVBaeoCx0p3SzARU28E3leQFGG77Nn6v3UBzOqUQSkblF9EomKYHtYFg6PzFLKHiUIs4FdVKVi_vo8P9Z9ruYKeXRMa2BJp_SHGeuKFpHuJI_9vT-0RO4I2ucYfIvLNsyC2AFAbBM_QrsbBz5lecKnMp5BaBYpji-4D6ckNTjM8ovRSHhP_KxEs0abJ_iw7_s6aY2j4z4vU8TIAUeuxkvdU-fEV6q_rz5skauHQKfUJYfou_LWA">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">E-commerce API Documentation</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Dynamic E-Commerce Workflow Management. The system features dynamic routes for order processing, real-time inventory updates, and secure user authentication. It also supports seamless automated order reporting and comprehensive product management. Documented Backend API published publicly using Postman.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Next.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">TypeScript</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">PostgreSQL</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 2: Pulse Headless Store -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="Pulse Commerce Headless Storefront Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOcfs4OCDS1WSs7pqe-fwsZAPsLrMlJuvl0ag-TufW9Q43Pb768fnhYLMFrjrhP0lXcUJckP_BfEwfpdC9cFdUrMtlV_mcpWoo6AeTgCg2cTFaadvX31nOw05H8iVjHXIy4nipY6JJYBX2CmUOfEV2zz-qXFcHN1mg_QfPztZJCvNqDwW1QynwBJQLv8XATt8wcEeXIrz703Xcf0PNtMGgtFQhEYeBOK3f0B_s_HNSXzKjWyfIqi9jO5AH6m3ggR7skQ">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Course Booking API Documentation</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      RESTful API for managing course enrollments, featuring user registration, authentication, and retrieval of user details. Supports course creation, updates, archiving, activation, and student enrollment. Publicly documented using Postman.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">React</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Node.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Stripe</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 3: TaskFlow AI Workspace -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="TaskFlow AI Collaboration Platform" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYCYmyoYC3ir6wKjtZcDMycUXhg8n4Udr6cCTRuDCWj63pz0S3axG78sXBwokBw3Xc43ANR1hvdnBdtWoEA8DVi-aRKGQM4IBiridKfoTglIiO9lRMPmSDeBpIx00YeD71cwqjuJP3EFWR_LFg-kuqRJNEN7YmHO6ovpOxcUGzN6InkwKEMbtJVZe51srxk6zeqz9VVAVU2Po_JfJmOgRIaJW8oha4y0XaRJeDNnTBqp3BnahZxN_GAQX2PyNld2y1tw">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Course booking App</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      A MERN-stack course enrollment system featuring user registration, authentication, and profile management. Authenticated users can create, update, archive, and activate courses. The platform also allows users to browse available courses and enroll seamlessly.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">MERN Stack</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Tailwind</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">OpenAI API</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 4: DevPulse Metric Engine -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="DevPulse Metric Engine Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-AcxfdthZ0GBie3MBTgO93vJpCD63ip9GhVVAfZ4zFi5oTvtVwL_Npeapb5k1mL3Hi6j6DZdeG5qAYpGxO5QF-ZtQWphDdDVChul-vUUmQxK5EevSj0jYN1ZBDDzSCIm3Z5VydE0tQxSNUCBCqAXnFpGUJNXom76QhF2gNXTVmcY3SsrsMdmD-Ijav3RPJh9Zq7NIgCuqXhyOlkD17Azfh36ONFljU1C0B8VBFIf8EFfUyYBsjt9bVlSB0LP3MBQIEA">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">E-commerce App</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      MERN E-Commerce Platform. The platform features dynamic product catalog with filtering and sorting, real-time search, seamless cart updates, secure checkout, and a comprehensive admin dashboard with real-time analytics and user management capabilities.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Golang</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Prometheus</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Grafana</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 5: CyberGuard Shield -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="CyberGuard Shield Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFt44z-bMcVNKdTfLQh4wR5jAnrIBfZh0YbyqZr84ltXEnubQHN-wQMfRv6vMAGgq7cftJxDGmkrBsll4OhKussSJgJRdOnJ5S6NuEgq-psL-7AVU5wTtBnp-pGkERr2NtUJjHaPB9p1eAlW5zGqDs4RcwL1sHgMlROUJyxS0VtcxvI387ndUbTmZEwSRwHPt3tPZ83Gd_WGMWL1s5PQmXxu7o0Jk2Hjpdw_tq9AqHBWdmE0EgOJNh4-X2ji9ZcTV7wA">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Airline Booking System Mockup</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Side Project: Conceptual design showcasing an intuitive UI for flight search, seat selection, and booking confirmation, focusing on user experience and workflor efficiency.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">React</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Node.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Redis</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 6: CloudSync Storage -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="CloudSync Storage Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgPl9Cc3z4cm_hZsvCUnhZBNzLLy74kbogZe1ehNh4ZvF0UucAa6KhZVDcSBqj2u1lmkNNi0g4Tz1YBPjqOekw4BKzyNIqRRYm9Hi6IiLVp5WmkwrY6kgcXzg6xTTIt_BGrI3m7-Iz02OVfB7fgTzErn-X8t3-cNdEfIivqrVYT6tRA3SeDW_LLvqAckRLtd0QRe4AuH99chUneTvferV9qGWIEMTE_8Fnh_Q8kQ9z3jvM7uPShecvhsdI5iJPHIwwQg">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Airline Booking System Prototype</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Side Project: Interactive prototpye simulating end-to-end airline booking functionalities, including flight search, reservation, payment processing, and real-time ticket management.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">AWS S3</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Express.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">MongoDB</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 7: AgriTech IoT Portal -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="AgriTech IoT Portal Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCexTO6nE9DbRXsqMKm2An6en0EkLV5JHf61rZ6LdyPeEJ3l9z85Wg3NjnNVJoMWjsDWHLCGimZTaE9bHP3uhtxcp0RYGw7ExnwTwAhoqJX5MM93VUN4xjsaCRrgOQrhB-gJ7VwEZogBefP1ZQFY2tq7jXa_rFkRL8RMRXNeGGmAnIQWLi6O8D3AN6Kv4TAAnE4N-JrzaMjWw8BD3j7bFH92KXmHp6K7-o3s10i26WZgFR-OEcdqFzvK0aI5AeQVC5Dgg">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Short Courses Capstone</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Placeholder for Short courses capstone project.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">React.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">MQTT</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Node.js</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 8: HealthTrack Telemed -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="HealthTrack Telemed Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvtoYKYoq6WI0E93ZTdjJNBsrwsCWTepPSfntPR1Y23WjVyr7t1PiGG223JSSGu88wUNDZ3ndQjT60b_nT3d7geFfBE-8oY5WbHsDKXIH84ZvnmMb40lyoQKVdllbBZV5sUf4bpqdfHZzSkmWzNPORZZjJnnN6WnawZoZt_0CbaAPehdaPd7L9K2OQPWwcn2r1KYSaG5gCfLuA4UVuL5i54qVimKi_DEtK705jyCrj_aO0qQFbokXcHL-veH8vSlJHyw">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Short Courses Capstone</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Placeholder for Short courses capstone project.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">WebRTC</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">React</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Express</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+<!-- Project 9: FinFlow Payments -->
+<div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2.5">
+<article class="h-full bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="relative h-36 sm:h-40 bg-slate-900 overflow-hidden group">
+<img alt="FinFlow Payments Preview" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKkPdulkpyX2OSuqlq21ftqfZmupakR0OiAngLtBwjeOxDwEoJhIAaEurmzSOWZCemT1UL80MTBBfin8wD7UDcVNgSO_Plix0PcKY9bN3FIY6f0Gx9SeKMn-AWKBPCyrgH6IAFcMj-vUv50lPMVtANj3C636-Ll6lln9W7S_1dKHIQhkZ2hUvY16BMHk9s3HD-NJN44G7rvWfqEuJfU7pPorXBduBPgBw5IjMVhpzyBgxr4kPTKyI4awbPI5rYjSCwsA">
+</div>
+<div class="p-4 sm:p-5">
+<h3 class="text-base font-bold text-slate-900 mb-1">Short Courses Capstone</h3>
+<p class="text-xs text-slate-500 leading-relaxed line-clamp-2 min-h-[32px]">
+                      Placeholder for Short courses capstone project.
+                    </p>
+<div class="mt-3 flex flex-wrap gap-1">
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">TypeScript</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">Next.js</span>
+<span class="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-600 text-[10px] font-medium">PostgreSQL</span>
+</div>
+</div>
+</div>
+<div class="px-4 sm:p-5 pt-2 pb-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+<a class="inline-flex items-center gap-1.5 text-blue-600 hover:text-blue-700 font-semibold transition" href="#live-demo">
+<span class="">Live Demo</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+</a>
+<a class="inline-flex items-center gap-1 text-slate-500 hover:text-slate-800 font-medium transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-solid fa-code text-[11px]"></i>
+<span class="">GitHub Code</span>
+</a>
+</div>
+</article>
+</div>
+</div>
+</div>
+<!-- Next Button -->
+<button aria-label="Next Project" class="flex absolute -right-2 sm:-right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/95 backdrop-blur-sm border border-slate-200 shadow-md items-center justify-center text-slate-700 hover:text-slate-900 hover:bg-slate-50 hover:scale-105 active:scale-95 transition cursor-pointer" id="carousel-next-btn">
+<i class="fa-solid fa-chevron-right text-xs sm:text-sm"></i>
+</button>
+</div>
+<!-- Carousel Pagination Indicator Dots -->
+<div class="flex justify-center items-center gap-2 mt-4 sm:mt-5" data-purpose="carousel-dots" id="carousel-dots-container"><button aria-label="Go to project 1" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-6 bg-slate-900"></button><button aria-label="Go to project 2" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 3" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 4" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 5" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 6" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 7" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 8" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button><button aria-label="Go to project 9" class="transition-all duration-300 rounded-full h-1.5 cursor-pointer w-2 bg-slate-300 hover:bg-slate-400"></button></div>
+</div>
+</section>
+<!-- END: ProjectsSection -->
+<!-- BEGIN: ToolsSection (Full Viewport) -->
+<section class="h-screen min-h-screen snap-start snap-always flex flex-col justify-center items-center relative overflow-hidden px-4 sm:px-6 lg:px-8 pb-6 border-t border-slate-100 bg-slate-50/50 pt-14" id="tools"><div class="max-w-5xl w-full mx-auto my-auto flex flex-col justify-center px-1">
+<!-- Section Header -->
+<div class="text-center mb-3 sm:mb-5 md:mb-7">
+<div class="inline-flex items-center px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-1">
+          Tools
+        </div>
+<p class="text-[11px] sm:text-xs text-slate-500 font-medium">
+          Core technologies and developer ecosystem used daily
+        </p>
+</div>
+<!-- 3 Categorized Tools Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-4 md:gap-6">
+<!-- Category 1: Front End -->
+<div class="bg-white border border-slate-200 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 md:p-6 shadow-sm hover:shadow-subtle transition flex flex-col justify-between" data-purpose="tools-card">
+<div>
+<div class="flex items-center justify-between mb-1.5 sm:mb-3">
+<div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center border border-blue-100">
+<i class="fa-solid fa-desktop text-xs sm:text-sm"></i>
+</div>
+<span class="text-[9px] sm:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Core UI</span>
+</div>
+<h3 class="text-sm sm:text-base font-bold text-slate-900">Front End</h3>
+<p class="text-[10px] sm:text-xs text-slate-500 mt-0.5 mb-2 sm:mb-4 hidden sm:block">Responsive, accessible user interfaces</p>
+<!-- Pill Buttons List -->
+<div class="grid grid-cols-2 md:flex md:flex-col gap-1.5 sm:gap-2 mt-1 sm:mt-0">
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-blue-400 hover:text-blue-600 transition shadow-2xs cursor-default">
+                HTML
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-blue-400 hover:text-blue-600 transition shadow-2xs cursor-default">
+                CSS
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-blue-400 hover:text-blue-600 transition shadow-2xs cursor-default">
+                Bootstrap
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-blue-400 hover:text-blue-600 transition shadow-2xs cursor-default">
+                JavaScript
+              </div>
+</div>
+</div>
+</div>
+<!-- Category 2: MERN Stack -->
+<div class="bg-white border border-slate-200 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 md:p-6 shadow-sm hover:shadow-subtle transition flex flex-col justify-between" data-purpose="tools-card">
+<div>
+<div class="flex items-center justify-between mb-1.5 sm:mb-3">
+<div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+<i class="fa-solid fa-code text-xs sm:text-sm"></i>
+</div>
+<span class="text-[9px] sm:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Full Stack</span>
+</div>
+<h3 class="text-sm sm:text-base font-bold text-slate-900">MERN</h3>
+<p class="text-[10px] sm:text-xs text-slate-500 mt-0.5 mb-2 sm:mb-4 hidden sm:block">Full stack web app development</p>
+<!-- Pill Buttons List -->
+<div class="grid grid-cols-2 md:flex md:flex-col gap-1.5 sm:gap-2 mt-1 sm:mt-0">
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-emerald-500 hover:text-emerald-700 transition shadow-2xs cursor-default">
+                MongoDB
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-emerald-500 hover:text-emerald-700 transition shadow-2xs cursor-default">
+                Express.js
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-emerald-500 hover:text-emerald-700 transition shadow-2xs cursor-default">
+                React.js
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-emerald-500 hover:text-emerald-700 transition shadow-2xs cursor-default">
+                Node.js
+              </div>
+</div>
+</div>
+</div>
+<!-- Category 3: Other Tools -->
+<div class="bg-white border border-slate-200 rounded-xl sm:rounded-2xl p-2.5 sm:p-4 md:p-6 shadow-sm hover:shadow-subtle transition flex flex-col justify-between" data-purpose="tools-card">
+<div>
+<div class="flex items-center justify-between mb-1.5 sm:mb-3">
+<div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center border border-purple-100">
+<i class="fa-solid fa-gear text-xs sm:text-sm"></i>
+</div>
+<span class="text-[9px] sm:text-[10px] font-semibold text-slate-400 uppercase tracking-wider">DevOps &amp; Cloud</span>
+</div>
+<h3 class="text-sm sm:text-base font-bold text-slate-900">Other Tools</h3>
+<p class="text-[10px] sm:text-xs text-slate-500 mt-0.5 mb-2 sm:mb-4 hidden sm:block">DevOps, cloud hosting, testing &amp; design</p>
+<!-- Pill Buttons List -->
+<div class="grid grid-cols-2 md:flex md:flex-col gap-1.5 sm:gap-2 mt-1 sm:mt-0">
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-purple-500 hover:text-purple-700 transition shadow-2xs cursor-default">
+                Heroku
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-purple-500 hover:text-purple-700 transition shadow-2xs cursor-default">
+                Git
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-purple-500 hover:text-purple-700 transition shadow-2xs cursor-default">
+                Postman
+              </div>
+<div class="w-full py-1 sm:py-2 px-2 sm:px-3 text-center rounded-lg sm:rounded-xl bg-slate-50/80 border border-slate-200/80 text-[11px] sm:text-xs font-medium text-slate-700 hover:bg-white hover:border-purple-500 hover:text-purple-700 transition shadow-2xs cursor-default">
+                Sublime Text
+              </div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<!-- END: ToolsSection -->
+<!-- BEGIN: ContactSection (Full Viewport with integrated footer) -->
+<section class="h-screen min-h-screen snap-start snap-always flex flex-col justify-between items-center relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-16 pb-3 border-t border-slate-200/60" id="contact">
+<div class="max-w-5xl w-full mx-auto my-auto flex flex-col justify-center">
+<!-- Section Header -->
+<div class="text-center mb-4 sm:mb-6">
+<div class="inline-flex items-center px-3.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-bold tracking-widest uppercase mb-1.5">
+          Contact
+        </div>
+<p class="text-xs text-slate-500 font-medium">
+          Get in touch for collaborations, contracts, or full-time roles
+        </p>
+</div>
+<!-- Responsive Card Grid: Map & Form -->
+<div class="bg-white border border-slate-200/90 rounded-3xl p-4 sm:p-6 lg:p-7 shadow-subtle grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch">
+<!-- Left Column: Google Maps Embed Card -->
+<div class="lg:col-span-6 flex flex-col justify-between rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 relative min-h-[220px] sm:min-h-[260px] lg:min-h-full">
+<!-- Top Map Region Badge -->
+<div class="absolute top-2.5 left-2.5 z-10 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg shadow-sm border border-slate-200/90 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-[10px] sm:text-[11px] font-bold text-slate-800 tracking-wide">Western Mindanao State University</span>
+</div>
+<!-- Embedded Google Map iframe -->
+<div class="relative w-full h-full min-h-[190px] sm:min-h-[220px] bg-slate-100 flex-grow">
+<iframe allowfullscreen="" class="w-full h-full min-h-[190px] sm:min-h-[220px] rounded-2xl" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1980.4021357867236!2d122.06217876822011!3d6.913990418632855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041dd7a24816f%3A0x51af215fb64cc81a!2sWestern%20Mindanao%20State%20University!5e0!3m2!1sen!2sph!4v1790755474054!5m2!1sen!2sph" style="border:0;"></iframe>
+</div>
+<!-- Bottom Location Meta Bar -->
+<div class="p-2.5 bg-slate-900 text-slate-300 text-xs flex flex-wrap items-center justify-between gap-2 border-t border-slate-800 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="text-[10px] sm:text-[11px] text-slate-300 font-medium">Zamboanga City, Philippines</span>
+<span class="text-slate-500">|</span>
+<span class="text-[9px] sm:text-[10px] text-slate-400 font-mono">PHT (UTC+8)</span>
+</div>
+<a class="text-[10px] sm:text-[11px] text-blue-400 hover:text-blue-300 transition font-medium inline-flex items-center gap-1" href="https://maps.google.com/?q=Western+Mindanao+State+University+Zamboanga+City" rel="noopener noreferrer" target="_blank">
+<span class="">Open in Maps</span>
+<i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+</a>
+</div>
+</div>
+<!-- Right Column: Interactive Contact Form -->
+<div class="lg:col-span-6 flex flex-col justify-between">
+<form class="space-y-3" id="contact-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out! Keith will respond soon.');">
+<!-- Contact Name Input -->
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-1" for="name">Contact Name</label>
+<input class="w-full rounded-xl border-slate-200 text-slate-800 text-xs sm:text-sm focus:border-slate-800 focus:ring-slate-800 shadow-2xs py-2 px-3 sm:py-2.5 sm:px-3.5 placeholder:text-slate-400 transition" id="name" name="name" placeholder="Jane Doe" required="" type="text">
+</div>
+<!-- Email Input -->
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-1" for="email">Email</label>
+<input class="w-full rounded-xl border-slate-200 text-slate-800 text-xs sm:text-sm focus:border-slate-800 focus:ring-slate-800 shadow-2xs py-2 px-3 sm:py-2.5 sm:px-3.5 placeholder:text-slate-400 transition" id="email" name="email" placeholder="jane@company.com" required="" type="email">
+</div>
+<!-- Message Textarea -->
+<div>
+<label class="block text-[10px] font-bold uppercase tracking-wider text-slate-600 mb-1" for="message">Message</label>
+<textarea class="w-full rounded-xl border-slate-200 text-slate-800 text-xs sm:text-sm focus:border-slate-800 focus:ring-slate-800 shadow-2xs py-2 px-3 sm:py-2 sm:px-3.5 placeholder:text-slate-400 resize-none transition" id="message" name="message" placeholder="Tell me about your project, timeline, and goals..." required="" rows="3"></textarea>
+</div>
+<!-- Footer with Socials & Submit Button -->
+<div class="pt-1 flex items-center justify-between">
+<!-- Social links -->
+<div class="flex items-center gap-2">
+<a aria-label="LinkedIn Profile" class="w-8 h-8 rounded-xl border border-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-600 hover:border-blue-300 transition" href="https://www.linkedin.com/in/keith-wilmer-handumon/" rel="noopener noreferrer" target="_blank">
+<i class="fa-brands fa-linkedin-in text-xs"></i>
+</a>
+<a aria-label="GitHub Profile" class="w-8 h-8 rounded-xl border border-slate-200 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:border-slate-400 transition" href="https://github.com/kimey31504/" rel="noopener noreferrer" target="_blank">
+<i class="fa-brands fa-github text-xs"></i>
+</a>
+</div>
+<!-- Submit Button -->
+<button class="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-slate-900 hover:bg-black text-white text-xs font-semibold tracking-wide shadow transition duration-200 active:scale-95" type="submit">
+<span class="">Submit</span>
+<i class="fa-solid fa-paper-plane text-[10px]"></i>
+</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Integrated Non-Snapping Footer Bar within Contact panel -->
+<div class="w-full max-w-5xl mx-auto pt-3 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-1 text-[11px] text-slate-400">
+<p class="text-center sm:text-left">
+        © 2026 Keith Wilmer Handumon. All rights reserved.
+      </p>
+<a class="inline-flex items-center gap-1 font-medium text-slate-500 hover:text-slate-800 transition" href="#home">
+<span class="">Back to top</span>
+<i class="fa-solid fa-arrow-up text-[9px]"></i>
+</a>
+</div>
+</section>
+<!-- END: ContactSection -->
+</div>
+<!-- END: Full Viewport Scroll Container -->
+<!-- BEGIN: InteractiveScripts -->
+<script data-purpose="viewport-snap-and-slider-controls">
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('viewport-container');
+    const sections = ['home', 'projects', 'tools', 'contact'];
+    const navItems = document.querySelectorAll('.nav-item');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const menuIcon = document.getElementById('menu-icon');
+
+    // Mobile Drawer Toggle
+    if (mobileMenuBtn && mobileDropdown) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileDropdown.classList.toggle('hidden');
+        if (mobileDropdown.classList.contains('hidden')) {
+          menuIcon.classList.replace('fa-xmark', 'fa-bars');
+        } else {
+          menuIcon.classList.replace('fa-bars', 'fa-xmark');
+        }
+      });
+
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+          }
+          mobileDropdown.classList.add('hidden');
+          menuIcon.classList.replace('fa-xmark', 'fa-bars');
+        });
+      });
+    }
+
+    // Active Tab Highlighting Function
+    function setActiveTab(sectionId) {
+      navItems.forEach(tab => {
+        if (tab.getAttribute('data-target') === sectionId) {
+          tab.classList.add('bg-slate-900', 'text-white');
+          tab.classList.remove('hover:text-slate-900', 'text-slate-600', 'hover:bg-slate-100');
+        } else {
+          tab.classList.remove('bg-slate-900', 'text-white');
+          tab.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-100');
+        }
+      });
+      mobileNavLinks.forEach(link => {
+        if (link.getAttribute('data-target') === sectionId) {
+          link.classList.add('bg-slate-900', 'text-white');
+          link.classList.remove('text-slate-700', 'hover:bg-slate-100');
+        } else {
+          link.classList.remove('bg-slate-900', 'text-white');
+          link.classList.add('text-slate-700', 'hover:bg-slate-100');
+        }
+      });
+    }
+
+    // Smooth Navigation Click
+    navItems.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = tab.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // IntersectionObserver to sync navbar state with scroll snap position
+    const observerOptions = {
+      root: container,
+      threshold: 0.55
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
+
+    // Continuous Carousel Controls
+    const slider = document.getElementById('projects-slider');
+    const prevBtn = document.getElementById('carousel-prev-btn');
+    const nextBtn = document.getElementById('carousel-next-btn');
+    const dotsContainer = document.getElementById('carousel-dots-container');
+    const totalProjects = 9;
+    let currentIndex = 0;
+
+    function getVisibleCards() {
+      const width = window.innerWidth;
+      if (width >= 1024) return 3;
+      if (width >= 768) return 2;
+      return 1;
+    }
+
+    function updateCarousel() {
+      const visible = getVisibleCards();
+      const percentShift = (100 / visible) * currentIndex;
+      slider.style.transform = `translateX(-${percentShift}%)`;
+
+      // Render Dots
+      if (dotsContainer) {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalProjects; i++) {
+          const dot = document.createElement('button');
+          dot.setAttribute('aria-label', `Go to project ${i + 1}`);
+          dot.className = `transition-all duration-300 rounded-full h-1.5 cursor-pointer ${
+            i === currentIndex ? 'w-6 bg-slate-900' : 'w-2 bg-slate-300 hover:bg-slate-400'
+          }`;
+          dot.addEventListener('click', () => {
+            currentIndex = i;
+            updateCarousel();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalProjects;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalProjects) % totalProjects;
+      updateCarousel();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    window.addEventListener('resize', () => {
+      updateCarousel();
+    });
+
+    // Initialize Carousel
+    updateCarousel();
+  });
+</script>
+<!-- END: InteractiveScripts -->
+
+
+</body></html>
